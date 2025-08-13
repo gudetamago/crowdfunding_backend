@@ -32,3 +32,12 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 
 ### DB Schema
 ![]( {{ ./relative/path/to/your/schema/image.png }} )
+
+
+### Wouldn't it be cool if...
+
+{{Ideas that seemed cool at the time, but abandoned due to time constraints.}}
+
+- Campaign to have date created, date started and date ended, which would enable campaigns to be scheduled and to have its status automatically updated. But this would need an automated job to be running in the background, continuously checking for dates and updating the campaign status.
+- Related to the above, a campaign could have 1 of 4 possible statuses: DRAFT/ACTIVE/COMPLETED/CANCELLED - however this relates to the automatic status update in the point above.
+- 
