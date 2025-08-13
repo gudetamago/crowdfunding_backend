@@ -24,10 +24,10 @@ It might look messy here in the PDF, but once it's rendered it looks very neat!
 
 It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
 
-| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
-| /fundraisers | GET         | List all fundraisers     | N/A          | 200                   | None                         |
-| /fundraisers | POST        | Create new fundraisers     | JSON Payload          | 201                   | Any logged in user      |
+| URL        | HTTP Method | Purpose              | Request Body | Success Response Code | Authentication/Authorisation |
+|------------| ----------- |----------------------| ------------ | --------------------- | ---------------------------- |
+| /campaigns | GET         | List all campaigns   | N/A          | 200                   | None                         |
+| /campaigns | POST        | Create new campaigns | JSON Payload          | 201                   | Any logged in user      |
 
 
 ### DB Schema
