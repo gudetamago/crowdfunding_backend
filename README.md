@@ -24,11 +24,20 @@ It might look messy here in the PDF, but once it's rendered it looks very neat!
 
 It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
 
-| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
-| /fundraisers | GET         | List all fundraisers     | N/A          | 200                   | None                         |
-| /fundraisers | POST        | Create new fundraisers     | JSON Payload          | 201                   | Any logged in user      |
+| URL        | HTTP Method | Purpose              | Request Body | Success Response Code | Authentication/Authorisation |
+|------------| ----------- |----------------------| ------------ | --------------------- | ---------------------------- |
+| /campaigns | GET         | List all campaigns   | N/A          | 200                   | None                         |
+| /campaigns | POST        | Create new campaigns | JSON Payload          | 201                   | Any logged in user      |
 
 
 ### DB Schema
 ![]( {{ ./relative/path/to/your/schema/image.png }} )
+
+
+### Wouldn't it be cool if...
+
+{{Ideas that seemed cool at the time, but abandoned due to time constraints.}}
+
+- Campaign to have date created, date started and date ended, which would enable campaigns to be scheduled and to have its status automatically updated. But this would need an automated job to be running in the background, continuously checking for dates and updating the campaign status.
+- Related to the above, a campaign could have 1 of 4 possible statuses: DRAFT/ACTIVE/COMPLETED/CANCELLED - however this relates to the automatic status update in the point above.
+- 
