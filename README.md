@@ -9,13 +9,17 @@ Sheila S.
 {{ Who are your intended audience? How will they use the website? }}
 
 ### Front End Pages/Functionality
-- {{ A page on the front end }}
-    - {{ A list of dot-points showing functionality is available on this page }}
+- Home page
+    - Featured campaigns
     - {{ etc }}
     - {{ etc }}
-- {{ A second page available on the front end }}
-    - {{ Another list of dot-points showing functionality }}
-    - {{ etc }}
+- Create new campaigns
+    - Form containing campaign details
+    - Ability to submit
+    - Nice error pages for validation
+- Display campaign
+    - Display campaign details
+    - Display total amount pledged
 
 ### API Spec
 {{ Fill out the table below to define your endpoints. An example of what this might look like is shown at the bottom of the page. 
@@ -24,14 +28,17 @@ It might look messy here in the PDF, but once it's rendered it looks very neat!
 
 It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
 
-| URL        | HTTP Method | Purpose              | Request Body | Success Response Code | Authentication/Authorisation |
-|------------| ----------- |----------------------| ------------ | --------------------- | ---------------------------- |
-| /campaigns | GET         | List all campaigns   | N/A          | 200                   | None                         |
-| /campaigns | POST        | Create new campaigns | JSON Payload          | 201                   | Any logged in user      |
+| URL          | HTTP Method | Purpose                              | Request Body | Success Response Code | Authentication/Authorisation |
+| ------------ | ----------- | ------------------------------------ | ------------ | --------------------- | ---------------------------- |
+| /campaigns   | GET         | List all campaigns                   | N/A          | 200                   | None                         |
+| /campaigns   | POST        | Create new campaigns                 | JSON Payload | 201                   | Any logged in user           |
+| /campaigns/1 | POST        | Get the details of selected campaign | JSON Payload | 201                   | Any logged in user           |
+| /pledges/    | GET         | Fetch all pledges                    | N/A          | 200                   | Any logged in user           |
+| /pledges/    | POST        | Create new pledge                    | JSON Payload | 201                   | Any logged in user           |
 
 
 ### DB Schema
-![]( {{ ./relative/path/to/your/schema/image.png }} )
+![]( ./database.drawio.svg )
 
 
 ### Wouldn't it be cool if...

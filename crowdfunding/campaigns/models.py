@@ -11,3 +11,12 @@ class Campaign(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_end = models.DateTimeField(null=True, blank=True)
 
+class Pledge(models.Model):
+    amount = models.IntegerField()
+    comment = models.CharField(max_length=200)
+    anonymous = models.BooleanField()
+    campaign = models.ForeignKey(
+        'Campaign',
+        related_name='pledges',
+        on_delete=models.CASCADE
+    ) # we're not referring by ID... we just refer to the object
