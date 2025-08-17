@@ -11,15 +11,33 @@ Sheila S.
 ### Front End Pages/Functionality
 - Home page
     - Featured campaigns
-    - {{ etc }}
-    - {{ etc }}
+    - Most popular campaign (based off amount pledged)
 - Create new campaigns
     - Form containing campaign details
     - Ability to submit
     - Nice error pages for validation
 - Display campaign
     - Display campaign details
-    - Display total amount pledged
+    - Display total amount pledged out of target total
+    - Display comments from pledges with names/anonymous
+    - Display a default message if there is no pledge
+    - Nice error pages for validation
+- Pledge
+    - Ability to add pledge for logged in user
+    - Form containing pledge details (amount, comment, anonymity)
+    - Ability to submit
+    - Nice error pages for validation
+- Logon
+    - Form for username and password
+    - Error message for validation
+- Signup
+    - Ability to create new user
+    - Error message/page for duplicate usernames or duplidate email
+- User page
+    - Display username
+    - List all pledges made by the user
+    - Ability to edit username/email/password is not supported
+    - 
 
 ### API Spec
 {{ Fill out the table below to define your endpoints. An example of what this might look like is shown at the bottom of the page. 
