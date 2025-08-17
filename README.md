@@ -26,7 +26,7 @@ Sheila S.
     - Ability to add pledge for logged in user
     - Form containing pledge details (amount, comment, anonymity)
     - Ability to submit
-    - Nice error pages for validation
+    - Nice error pages for validation for amount and ensuring that pledges are made only for active campaigns
 - Logon
     - Form for username and password
     - Error message for validation
@@ -37,7 +37,7 @@ Sheila S.
     - Display username
     - List all pledges made by the user
     - Ability to edit username/email/password is not supported
-    - 
+    - Ability to update pledge (changing pledge amount etc) is not supported 
 
 ### API Spec
 {{ Fill out the table below to define your endpoints. An example of what this might look like is shown at the bottom of the page. 
