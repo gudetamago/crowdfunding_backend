@@ -13,4 +13,4 @@ class PledgeSerializer(serializers.ModelSerializer):
 
 class CampaignDetailSerializer(CampaignSerializer):
     pledges = PledgeSerializer(many=True, read_only=True) 
-    # read_only because you don't wnat to be updating data
+    # read_only because you don't want to be updating data
