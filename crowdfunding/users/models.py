@@ -4,5 +4,8 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class CustomUser(AbstractUser):
 
+    # nickname = models.CharField(max_length=200, null=True, blank=True)
+    # alt_nickname = models.CharField(max_length=200, null=True, blank=True)
+
     def __str__(self):
         return self.username 

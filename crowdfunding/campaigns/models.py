@@ -15,6 +15,10 @@ class Campaign(models.Model):
         related_name='owned_fundraisers',
         on_delete=models.CASCADE
     )
+    # Below are extra fields that are not part of the requirements
+    # alt_title = models.CharField(max_length=200)
+    # alt_description = models.TextField()
+    # alt_image = models.URLField()
 
 class Pledge(models.Model):
     amount = models.IntegerField()
