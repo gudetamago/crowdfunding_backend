@@ -2,9 +2,13 @@ from rest_framework import serializers
 from django.apps import apps
  
 class CampaignSerializer(serializers.ModelSerializer):
+
+    owner = serializers.ReadOnlyField(source='owner.id') # "source" because it comes from another model
+
     class Meta:
         model = apps.get_model('campaigns.Campaign')
         fields = '__all__'
+        # exclude owner   <- don't do this, this will exclude owner but it won't return the data either to the front end
 
 class PledgeSerializer(serializers.ModelSerializer):
     class Meta:

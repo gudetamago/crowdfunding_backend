@@ -16,7 +16,7 @@ class CampaignList(APIView):
     def post(self, request):
         serializer = CampaignSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(owner=request.user) # This will assign owner to be the currently logged in user
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
