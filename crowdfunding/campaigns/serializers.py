@@ -11,6 +11,9 @@ class CampaignSerializer(serializers.ModelSerializer):
         # exclude owner   <- don't do this, this will exclude owner but it won't return the data either to the front end
 
 class PledgeSerializer(serializers.ModelSerializer):
+
+    supporter = serializers.ReadOnlyField(source='supporter.id')
+
     class Meta:
         model = apps.get_model('campaigns.Pledge')
         fields = '__all__'
