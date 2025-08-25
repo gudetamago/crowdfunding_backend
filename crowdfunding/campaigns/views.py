@@ -64,15 +64,15 @@ class PledgeList(APIView):
 
 class StretchList(APIView):
 
-    def get(self, request, pk): # TODO
-        stretches = Stretch.objects.all()
+    def get(self, request, pk):
+        stretches = Stretch.objects.filter(campaign_id=pk)
         serializer = StretchSerializer(stretches, many=True)
         return Response(serializer.data)
 
     def post(self, request, pk):
         serializer = StretchSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(campaign=pk) # Check this TODO
+            serializer.save(campaign_id=pk)
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
