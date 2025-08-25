@@ -41,6 +41,17 @@ Crowdfunding for villain lair - Name to be determined.
     - Ability to logoff
     - Ability to edit username/email/password is not supported
     - Ability to update pledge (changing pledge amount etc) is not supported 
+- Stretch goals
+    - List all stretch goals for selected campaign
+    - Ability to add stretch goal for selected campaign, for owner of the campaign
+    - Form containing stretch goal details (amount, description)
+    - Nice error pages for validation for amount and ensuring that stretch goals are made only for active campaigns
+- Admin page
+    - List all campaigns
+    - Ability to edit campaign details
+    - Ability to delete campaign
+    - Ability to delete user
+    - Ability to add stretch goal for selected campaign
 
 ### API Spec
 {{ Fill out the table below to define your endpoints. An example of what this might look like is shown at the bottom of the page. 
@@ -49,18 +60,20 @@ It might look messy here in the PDF, but once it's rendered it looks very neat!
 
 It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
 
-| URL           | HTTP Method | Purpose                                  | Request Body | Success Response Code | Authentication/Authorisation |
-|---------------|-------------|------------------------------------------|--------------|-----------------------|------------------------------|
-| /campaigns    | GET         | List all campaigns                       | N/A          | 200                   | None                         |
-| /campaigns    | POST        | Create new campaigns                     | JSON Payload | 201                   | Any logged in user           |
-| /campaigns/1  | POST        | Get the details of selected campaign     | JSON Payload | 201                   | Any logged in user           |
-| /pledges/     | GET         | Fetch all pledges                        | N/A          | 200                   | Any logged in user           |
-| /pledges/add/ | POST        | Create new pledge                        | JSON Payload | 201                   | Any logged in user           | 
-| /signup/      | GET         | Display form for user signup             | N/A          | 200                   | None                         |
-| /signup/      | POST        | Display whether user account was created | JSON Payload | 201                   | Any logged in user           |
-| /logon/       | GET         | Display form for user logon              | N/A          | 200                   | None                         |
-| /logon/       | POST        | Let user logon                           | JSON Payload | 201                   | Any logged in user           | 
-| /user/        | GET         | View user details                        | N/A          | 200                   | Any logged in user           |
+| URL           | HTTP Method | Purpose                                       | Request Body | Success Response Code | Authentication/Authorisation |
+|---------------|-------------|-----------------------------------------------|--------------|-----------------------|------------------------------|
+| /campaigns    | GET         | List all campaigns                            | N/A          | 200                   | None                         |
+| /campaigns    | POST        | Create new campaigns                          | JSON Payload | 201                   | Any logged in user           |
+| /campaigns/1  | POST        | Get the details of selected campaign          | JSON Payload | 201                   | Any logged in user           |
+| /pledges/     | GET         | Fetch all pledges                             | N/A          | 200                   | Any logged in user           |
+| /pledges/add/ | POST        | Create new pledge                             | JSON Payload | 201                   | Any logged in user           | 
+| /signup/      | GET         | Display form for user signup                  | N/A          | 200                   | None                         |
+| /signup/      | POST        | Display whether user account was created      | JSON Payload | 201                   | Any logged in user           |
+| /logon/       | GET         | Display form for user logon                   | N/A          | 200                   | None                         |
+| /logon/       | POST        | Let user logon                                | JSON Payload | 201                   | Any logged in user           | 
+| /user/        | GET         | View user details                             | N/A          | 200                   | Any logged in user           |
+| /stretches/1  | GET         | View all stretch goals for selected campaign  | JSON Payload | 201                   | None                         |
+| /stretches/1  | POST        | Create new stretch goal for selected campaign | JSON Payload | 201                   | Owner of the campaign        |
 
 
 ### DB Schema
