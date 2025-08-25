@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
-from .models import Campaign, Pledge
-from .serializers import CampaignSerializer, CampaignDetailSerializer, PledgeSerializer
+from .models import Campaign, Pledge, Stretch
+from .serializers import CampaignSerializer, CampaignDetailSerializer, PledgeSerializer, StretchSerializer
 
 class CampaignList(APIView):
 
@@ -60,4 +60,26 @@ class PledgeList(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+
+
+class StretchList(APIView):
+
+    def get(self, request, pk): # TODO
+        stretches = Stretch.objects.all()
+        serializer = StretchSerializer(stretches, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, pk):
+        serializer = StretchSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(campaign=pk) # Check this TODO
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
 

@@ -21,3 +21,11 @@ class PledgeSerializer(serializers.ModelSerializer):
 class CampaignDetailSerializer(CampaignSerializer):
     pledges = PledgeSerializer(many=True, read_only=True) 
     # read_only because you don't want to be updating data
+
+class StretchSerializer(serializers.ModelSerializer):
+
+    campaign = serializers.ReadOnlyField(source='campaign.id')
+
+    class Meta:
+        model = apps.get_model('campaigns.Stretch')
+        fields = '__all__'

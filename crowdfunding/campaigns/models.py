@@ -34,3 +34,13 @@ class Pledge(models.Model):
         related_name='pledges', # we're referring to the property of 'pledges' on the other side
         on_delete=models.CASCADE
     )
+
+# Below is an additional feature that is not part of the requirements
+class Stretch(models.Model):
+    amount = models.IntegerField()
+    description = models.CharField(max_length=500)
+    campaign = models.ForeignKey(
+        'Campaign',
+        related_name='stretches',
+        on_delete=models.CASCADE
+    )
