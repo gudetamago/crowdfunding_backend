@@ -1,11 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 from django.http import Http404
 from .models import Campaign, Pledge, Stretch
 from .serializers import CampaignSerializer, CampaignDetailSerializer, PledgeSerializer, StretchSerializer
+from .permissions import IsOwnerOrReadOnly
 
 class CampaignList(APIView):
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request):
        
@@ -28,9 +31,15 @@ class CampaignList(APIView):
     
 class CampaignDetail(APIView):
 
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    ]
+
     def get_object(self, pk):
         try:
             campaign = Campaign.objects.get(pk=pk)
+            self.check_object_permissions(self.request,  campaign)
             return campaign
         except Campaign.DoesNotExist:
             raise Http404
@@ -39,6 +48,22 @@ class CampaignDetail(APIView):
         campaign = self.get_object(pk)
         serializer = CampaignDetailSerializer(campaign)
         return Response(serializer.data)
+    
+    def put(self, request, pk):
+        campaign = self.get_object(pk)
+        serializer = CampaignDetailSerializer(
+            instance=campaign,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 class PledgeList(APIView):
 

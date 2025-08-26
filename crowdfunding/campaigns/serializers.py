@@ -22,6 +22,20 @@ class CampaignDetailSerializer(CampaignSerializer):
     pledges = PledgeSerializer(many=True, read_only=True) 
     # read_only because you don't want to be updating data
 
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title) # If there's no 'title' to update, just put the old valiue back
+        instance.description = validated_data.get('description', instance.description)
+        instance.goal = validated_data.get('goal', instance.goal)
+        instance.image = validated_data.get('image', instance.image)
+        instance.is_open = validated_data.get('is_open', instance.is_open)
+        instance.date_created = instance.date_created
+        instance.owner = validated_data.get('owner', instance.owner)
+        instance.alt_title = validated_data.get('alt_title', instance.alt_title) # If there's no 'title' to update, just put the old valiue back
+        instance.alt_description = validated_data.get('alt_description', instance.alt_description)
+        instance.alt_image = validated_data.get('alt_image', instance.alt_image)
+        instance.save()
+        return instance
+
 class StretchSerializer(serializers.ModelSerializer):
 
     campaign = serializers.ReadOnlyField(source='campaign.id')
