@@ -36,6 +36,18 @@ class CampaignDetailSerializer(CampaignSerializer):
         instance.save()
         return instance
 
+class PledgeDetailSerializer(PledgeSerializer):
+    
+    def update(self, instance, validated_data):
+        instance.amount = validated_data.get('amount', instance.amount)
+        instance.comment = validated_data.get('comment', instance.comment)
+        instance.anonymous = validated_data.get('anonymous', instance.anonymous)
+        instance.campaign = instance.campaign
+        instance.supporter = instance.supporter
+        instance.save()
+        return instance
+
+
 class StretchSerializer(serializers.ModelSerializer):
 
     campaign = serializers.ReadOnlyField(source='campaign.id')
