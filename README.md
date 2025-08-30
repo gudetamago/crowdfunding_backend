@@ -65,15 +65,15 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 | /campaigns    | GET         | List all campaigns                            | N/A          | 200                   | None                         |
 | /campaigns    | POST        | Create new campaigns                          | JSON Payload | 201                   | Any logged in user           |
 | /campaigns/1  | POST        | Get the details of selected campaign          | JSON Payload | 201                   | Any logged in user           |
+| /campaigns/1  | PUT        | Update details of selected campaign          | JSON Payload | 200                   | Only owner of the campaign           |
 | /pledges/     | GET         | Fetch all pledges                             | N/A          | 200                   | Any logged in user           |
-| /pledges/add/ | POST        | Create new pledge                             | JSON Payload | 201                   | Any logged in user           | 
-| /signup/      | GET         | Display form for user signup                  | N/A          | 200                   | None                         |
-| /signup/      | POST        | Display whether user account was created      | JSON Payload | 201                   | Any logged in user           |
-| /logon/       | GET         | Display form for user logon                   | N/A          | 200                   | None                         |
-| /logon/       | POST        | Let user logon                                | JSON Payload | 201                   | Any logged in user           | 
+| /pledges/ | POST        | Create new pledge                             | JSON Payload | 201                   | Any logged in user           | 
+| /pledges/1 | PUT        | Update details of selected pledge                             | JSON Payload | 200                   | Only supporter who created the pledge           | 
 | /user/        | GET         | View user details                             | N/A          | 200                   | Any logged in user           |
-| /stretches/1  | GET         | View all stretch goals for selected campaign  | JSON Payload | 201                   | None                         |
-| /stretches/1  | POST        | Create new stretch goal for selected campaign | JSON Payload | 201                   | Owner of the campaign        |
+| /user/        | POST         | Add new user                             | JSON Payload          | 201                   | None           |
+| /api-token-auth/        | POST         | Get auth token                             | JSON Payload          | 200                   | None           |
+| /stretches/1 (not implemented)   | GET         | View all stretch goals for selected campaign  | JSON Payload | 201                   | None                         |
+| /stretches/1 (not implemented)  | POST        | Create new stretch goal for selected campaign | JSON Payload | 201                   | Owner of the campaign        |
 
 
 ### DB Schema
