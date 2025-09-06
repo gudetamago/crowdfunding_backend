@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 from django.http import Http404
+from django.db.models import Sum
 from .models import Campaign, Pledge, Stretch
 from .serializers import CampaignSerializer, CampaignDetailSerializer, PledgeSerializer, PledgeDetailSerializer, StretchSerializer
 from .permissions import IsOwnerOrReadOnly, isSupporterOrReadOnly
@@ -46,7 +47,11 @@ class CampaignDetail(APIView):
 
     def get(self, request, pk):
         campaign = self.get_object(pk)
+        amount_pledged = campaign.pledges.aggregate(total=Sum('amount'))['total'] or 0
+        campaign.amount_pledged = amount_pledged  # Set the amount_pledged attribute
+        
         serializer = CampaignDetailSerializer(campaign)
+
         return Response(serializer.data)
     
     def put(self, request, pk):

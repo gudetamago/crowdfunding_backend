@@ -4,7 +4,7 @@ from django.apps import apps
 class CampaignSerializer(serializers.ModelSerializer):
 
     owner = serializers.ReadOnlyField(source='owner.id') # "source" because it comes from another model
-
+    
     class Meta:
         model = apps.get_model('campaigns.Campaign')
         fields = '__all__'
@@ -19,11 +19,13 @@ class PledgeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CampaignDetailSerializer(CampaignSerializer):
-    pledges = PledgeSerializer(many=True, read_only=True) 
+    pledges = PledgeSerializer(many=True, read_only=True)
     # read_only because you don't want to be updating data
+    amount_pledged = serializers.IntegerField(default=0)
+
 
     def update(self, instance, validated_data):
-        instance.title = validated_data.get('title', instance.title) # If there's no 'title' to update, just put the old valiue back
+        instance.title = validated_data.get('title', instance.title) # If there's no 'title' to update, just put the old value back
         instance.description = validated_data.get('description', instance.description)
         instance.goal = validated_data.get('goal', instance.goal)
         instance.image = validated_data.get('image', instance.image)
