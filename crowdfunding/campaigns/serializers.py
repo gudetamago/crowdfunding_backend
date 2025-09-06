@@ -22,7 +22,7 @@ class CampaignDetailSerializer(CampaignSerializer):
     pledges = PledgeSerializer(many=True, read_only=True)
     # read_only because you don't want to be updating data
     amount_pledged = serializers.IntegerField(default=0)
-
+    total_unique_supporters = serializers.IntegerField(default=0)
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title) # If there's no 'title' to update, just put the old value back

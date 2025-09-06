@@ -49,6 +49,8 @@ class CampaignDetail(APIView):
         campaign = self.get_object(pk)
         amount_pledged = campaign.pledges.aggregate(total=Sum('amount'))['total'] or 0
         campaign.amount_pledged = amount_pledged  # Set the amount_pledged attribute
+        total_unique_supporters = campaign.pledges.values('supporter').distinct().count()
+        campaign.total_unique_supporters = total_unique_supporters  # Set the total_unique_supporters attribute
         
         serializer = CampaignDetailSerializer(campaign)
 
