@@ -41,7 +41,7 @@ Crowdfunding for villain lair - Name to be determined.
     - Ability to logoff
     - Ability to edit username/email/password is not supported
     - Ability to update pledge (changing pledge amount etc) is not supported 
-- Stretch goals
+- Stretch goals [PLANNED]
     - List all stretch goals for selected campaign
     - Ability to add stretch goal for selected campaign, for owner of the campaign
     - Form containing stretch goal details (amount, description)
