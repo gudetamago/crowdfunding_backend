@@ -71,6 +71,7 @@ class CustomAuthToken(ObtainAuthToken):
             'token': token.key,
             'user_id': user.id,
             # 'email': user.email,
+            'username': user.username,
             'nickname': user.nickname,
             'alt_nickname': user.alt_nickname
         }) 
