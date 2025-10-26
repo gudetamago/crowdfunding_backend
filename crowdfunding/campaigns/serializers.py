@@ -13,6 +13,8 @@ class CampaignSerializer(serializers.ModelSerializer):
 class PledgeSerializer(serializers.ModelSerializer):
 
     supporter = serializers.ReadOnlyField(source='supporter.id')
+    nickname = serializers.ReadOnlyField(source='supporter.nickname')
+    alt_nickname = serializers.ReadOnlyField(source='supporter.alt_nickname')
 
     class Meta:
         model = apps.get_model('campaigns.Pledge')
