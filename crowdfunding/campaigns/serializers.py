@@ -4,6 +4,8 @@ from django.apps import apps
 class CampaignSerializer(serializers.ModelSerializer):
 
     owner = serializers.ReadOnlyField(source='owner.id') # "source" because it comes from another model
+    owner_nickname = serializers.ReadOnlyField(source='owner.nickname')
+    owner_alt_nickname = serializers.ReadOnlyField(source='owner.alt_nickname')
     
     class Meta:
         model = apps.get_model('campaigns.Campaign')
